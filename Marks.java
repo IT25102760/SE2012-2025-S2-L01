@@ -1,22 +1,28 @@
 import java.util.Scanner;
+
 public class Marks {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
+        String[] subjects = {"Mathematics", "Chemistry", "Physics"};
+
         System.out.print("Enter number of students: ");
         int n = sc.nextInt();
 
         int[][] marks = new int[n][3];
-        for(int i = 0; i<n; i++){
-            System.out.println("\nStudent "+(i + 1));
-            for(int j = 0; j < 3; j++){
-                System.out.println("Marks for Subject "+(j + 1)+ ": ");
+
+        for (int i = 0; i < n; i++) {
+            System.out.println("\nStudent " + (i + 1));
+
+            for (int j = 0; j < 3; j++) {
+                System.out.print("Marks for " + subjects[j] + ": ");
                 marks[i][j] = sc.nextInt();
             }
         }
 
         while (true) {
-            System.out.println("\n Main Menu");
+            System.out.println("\nMain Menu");
             System.out.println("1. Update Student Marks");
             System.out.println("2. Subject Average");
             System.out.println("3. Student Average");
@@ -25,75 +31,81 @@ public class Marks {
 
             System.out.print("Enter choice: ");
             int choice = sc.nextInt();
+
             switch (choice) {
+
                 case 1:
-                    System.out.print("Enter Student ID (1-"+ n +"): ");
+                    System.out.print("Enter Student ID (1-" + n + "): ");
                     int id = sc.nextInt() - 1;
 
-                    System.out.print("Enter Subject ID (1-3): ");
-                    int sub = sc.nextInt() -1;
+                    System.out.println("Select Subject:");
+                    System.out.println("1. Mathematics");
+                    System.out.println("2. Chemistry");
+                    System.out.println("3. Physics");
+                    System.out.print("Enter Subject ID: ");
+                    int sub = sc.nextInt() - 1;
 
-                    System.out.print("Enter New Marks: ");
+                    System.out.print("Enter New Marks for " + subjects[sub] + ": ");
                     marks[id][sub] = sc.nextInt();
 
-                    System.out.println("Mark Updated Successfully.");
-                    
+                    System.out.println(subjects[sub] + " mark updated successfully.");
                     break;
 
-                    case 2:
-                    System.out.print("Enter Subject ID (1-3): ");
-                    sub = sc.nextInt() -1;
+                case 2:
+                    System.out.println("Select Subject:");
+                    System.out.println("1. Mathematics");
+                    System.out.println("2. Chemistry");
+                    System.out.println("3. Physics");
+                    System.out.print("Enter Subject ID: ");
+                    sub = sc.nextInt() - 1;
+
                     int subjectSum = 0;
 
-                    for(int i = 0; i < n; i++) {
+                    for (int i = 0; i < n; i++) {
                         subjectSum += marks[i][sub];
                     }
 
-                    double subjectAvg = (double)subjectSum /n;
-                    
-                    System.out.println("Subject Average = " +subjectAvg);
+                    double subjectAvg = (double) subjectSum / n;
 
+                    System.out.println(subjects[sub] + " Average = " + subjectAvg);
                     break;
 
-                    case 3:
-                    System.out.println("Enter Student ID (1-"+ n +"): ");
-                    id = sc.nextInt() -1;
+                case 3:
+                    System.out.print("Enter Student ID (1-" + n + "): ");
+                    id = sc.nextInt() - 1;
+
                     int studentSum = 0;
 
-                    for(int j = 0; j < 3; j++){
+                    for (int j = 0; j < 3; j++) {
                         studentSum += marks[id][j];
                     }
 
-                    double studentAvg = (double)studentSum /3;
-                    
-                    System.out.println("Student Avergae = " + studentAvg);
+                    double studentAvg = (double) studentSum / 3;
 
+                    System.out.println("Student Average = " + studentAvg);
                     break;
 
-                    case 4:
+                case 4:
                     System.out.print("Enter Student ID (1-" + n + "): ");
-                    id = sc.nextInt() -1;
+                    id = sc.nextInt() - 1;
 
                     int total = 0;
 
-                    for(int j = 0; j < 3; j++){
+                    for (int j = 0; j < 3; j++) {
                         total += marks[id][j];
                     }
 
-                    System.out.println("Student Total = "+ total);
-
+                    System.out.println("Student Total = " + total);
                     break;
 
-                    case 5:
+                case 5:
                     System.out.println("Program Ended.");
                     sc.close();
                     return;
-            
+
                 default:
                     System.out.println("Invalid Choice!");
             }
-            
         }
-
     }
 }
