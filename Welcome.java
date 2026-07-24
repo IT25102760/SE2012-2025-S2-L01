@@ -8,6 +8,6 @@ public class Welcome {
         System.out.println("Enter your Last Name: ");
         String Lname = scanner.nextLine();
 
-        System.out.println("Weclome to Second Year: "+Fname+" "+Lname);
+        System.out.println("Welcome to Second Year: "+Fname+" "+Lname);
     }
 }
